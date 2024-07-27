@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{%block content%}
+{% include "navbar.html" %}
+
+<div class="px-16">
+<div >
+    <div class="px-4 sm:px-0 pt-4">
+      <h3 class="text-xl font-semibold leading-7 text-gray-900">{{ record.first_name }} {{ record.last_name }}'s record information</h3>
+      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details</p>
+    </div>
+    <div class="mt-6 border-t border-gray-100">
+      <dl class="divide-y divide-gray-100">
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ record.first_name }} {{ record.last_name }} </dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Email address</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ record.email }} </dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Phone number</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ record.phone }}</dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Address</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ record.address }}</dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">City</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> {{ record.city }}</dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-900">State</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> {{ record.state }}</dd>
+          </div>
+          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Zip Code</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> {{ record.zipcode }}</dd>
+          </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Actions</dt>
+          <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+            <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                <div class="flex w-0 flex-1 items-center">
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M17.414 4.586a2 2 0 00-2.828 0l-1.586 1.586-1.414 1.414L12 9.414l1.414-1.414L15.586 7l1.414-1.414a2 2 0 000-2.828zM3 20a2 2 0 002 2h14a2 2 0 002-2V6H3v14zm2-8h12v2H5v-2z"/>
+                    </svg>
+                  <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                    <span class="truncate font-medium text-gray-400">edit customer record</span>
+                  </div>
+                </div>
+                <div class="ml-4 flex-shrink-0">
+                  <a href="{% url 'update_record' record.id %}" class="font-medium text-yellow-600 hover:text-yellow-600">Edit</a>
+                </div>
+              </li>
+              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                <div class="flex w-0 flex-1 items-center">
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M6 2a2 2 0 00-2 2v1H1v2h1v15a2 2 0 002 2h14a2 2 0 002-2V5h1V3h-3V2H6zm12 2v1H6V4h12zM5 9h14v12H5V9zm4 6a1 1 0 100 2 1 1 0 000-2zm4 0a1 1 0 100 2 1 1 0 000-2z"/>
+                    </svg>
+                  <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                    <span class="truncate  text-gray-400">delete customer record</span>
+                  </div>
+                </div>
+                <div class="ml-4 flex-shrink-0">
+                  <a href="{% url 'delete' record.id %}" class="text-red-600 hover:text-red-800">Delete</a>
+                </div>
+              </li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  
+
+</div>
+
+{% endblock%}

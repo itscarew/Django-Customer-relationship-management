@@ -1,0 +1,96 @@
+{% extends "base.html" %} {%block content%} {% include "navbar.html" %}
+
+<div class="px-16">
+  <div class="flex justify-between items-center">
+    <h2 class="font-bold text-2xl my-2">Records</h2>
+    <a
+      href="{% url 'add_record' %}"
+      class="flex items-center space-x-2 rounded-md bg-indigo-600 hover:bg-indigo-700 px-3 py-2 text-sm font-medium text-white"
+      aria-current="page"
+    >
+      <!-- SVG Icon -->
+      <svg
+        class="h-5 w-5 text-white"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 4v16m8-8H4"
+        ></path>
+      </svg>
+      <span>Add record</span>
+    </a>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table
+      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Name</th>
+          <th scope="col" class="px-6 py-3">Email</th>
+          <th scope="col" class="px-6 py-3">Adress</th>
+          <th scope="col" class="px-6 py-3">City</th>
+          <th scope="col" class="px-6 py-3">State</th>
+          <th scope="col" class="px-6 py-3">Date Created</th>
+          <th scope="col" class="px-6 py-3">ID No.</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in records %}
+        <tr
+          class="odd:bg-white cursor-pointer odd:dark:bg-gray-900 hover:bg-gray-50 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+        >
+          <th scope="row" class="px-6 py-4">
+            <a href="{% url 'record' record.id %}" class="block">
+              {{ record.first_name }} {{ record.last_name }}
+            </a>
+          </th>
+          <td class="px-6 py-4">
+            <a href="{% url 'record' record.id %}" class="block">
+              {{ record.email }}
+            </a>
+          </td>
+          <td class="px-6 py-4">
+            <a href="{% url 'record' record.id %}" class="block">
+              {{ record.address }}
+            </a>
+          </td>
+          <td class="px-6 py-4">
+            <a href="{% url 'record' record.id %}" class="block">
+              {{ record.city }}
+            </a>
+          </td>
+          <td class="px-6 py-4">
+            <a href="{% url 'record' record.id %}" class="block">
+              {{ record.state }}
+            </a>
+          </td>
+          <td class="px-6 py-4">
+            <a href="{% url 'record' record.id %}" class="block">
+              {{ record.created_at }}
+            </a>
+          </td>
+          <td
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            <a href="{% url 'record' record.id %}" class="block">
+              {{ record.id }}
+            </a>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock%}
